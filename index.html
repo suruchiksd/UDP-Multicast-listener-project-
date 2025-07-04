@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Live Multicast Viewer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+    }
+    #data {
+      font-size: 1.2rem;
+      padding: 1rem;
+      background: #f4f4f4;
+      border-radius: 6px;
+      max-width: 600px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Live Multicast Packet</h1>
+  <div id="data">Waiting for packet...</div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const socket = io();
+    const display = document.getElementById('data');
+    socket.on('packet', (data) => {
+      display.textContent = data;
+    });
+  </script>
+</body>
+</html>
